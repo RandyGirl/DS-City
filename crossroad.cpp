@@ -48,7 +48,6 @@ std::unordered_map<std::string, int> Crossroad::get_neighbours()const
 }
 bool Crossroad::hasNeighbours()const
 {
-    //returns true if it is empty
     return this->neighbours.empty();
 }
 bool Crossroad::operator==(const Crossroad& other)

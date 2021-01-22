@@ -3,14 +3,14 @@
 
 #include "crossroad.h"
 #include <vector>
-#include <map>
+#include <unordered_map>
 
 class City
 {
     private:
     std::string name;
     std::vector<Crossroad> map;
-    std::map<std::string, bool> visited;
+    std::unordered_map<std::string, bool> visited;
 
     void set_visitedToNormal();
     std::vector<std::pair<std::string, std::string>> allStreets();

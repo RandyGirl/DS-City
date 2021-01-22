@@ -22,7 +22,7 @@ class Crossroad
     int get_neededDistance(const std::string& target);
     bool hasNeighbourNamed(const std::string& target);
     std::unordered_map<std::string, int> get_neighbours()const;
-    bool hasNeighbours()const;//////////
+    bool hasNeighbours()const;
     bool operator==(const Crossroad& other);
     Crossroad& operator=(const Crossroad& other);
     void print();

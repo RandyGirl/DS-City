@@ -8,7 +8,6 @@
 #include <stack>
 #include <vector>
 #include <unordered_map>
-#include <limits>
 
 void City::set_visitedToNormal()
 {
@@ -66,7 +65,7 @@ Crossroad& City::find(const std::string& name)
         }
     }
 }
-int City::get_neededDistance(const std::string& start, const std::string& target)//проверка дали има път
+int City::get_neededDistance(const std::string& start, const std::string& target)
 {
     for(int i = 0; i < map.size(); ++i){
         if(map[i].get_name() == start){
@@ -173,16 +172,21 @@ void City::shortestPath(const std::string& start, const std::string& target)
     std::vector<std::string> finalRes;
     this->set_visitedToNormal();
 
-    std::cout << "The shortest path from " << start << " to " << target << " is:" << this->shortestPathHelper(start, target, finalRes) <<
-                "\n And the Hole Path is:" << std::endl;
-    for(int i = 0; i < finalRes.size(); ++i){
-        std::cout << finalRes[i] << " -> ";
+    if(hasPath(start, target)){
+        std::cout << "The shortest path from " << start << " to " << target << " is:" << this->shortestPathHelper(start, target, finalRes) << 
+                        "\n And the Hole Path is:" << std::endl;
+        for(int i = 0; i < finalRes.size(); ++i){
+            std::cout << finalRes[i] << " -> ";
+        }
+        std::cout << target << std::endl;
+    }else{
+        std::cout << "There is no path from " << start << " to " << target << std::endl;
     }
-    std::cout << target << std::endl;
+
+    
 }
 void City::shortestPathAlternative(const std::string& start, const std::string& target, const std::vector<Crossroad>& closedCrossroads)
 {
-    //merge with shortestPath
     City alternativeCity = City(this->name, this->map); 
     for(int i = 0; i < alternativeCity.map.size(); ++i){
         for(int j = 0; j < closedCrossroads.size(); ++j){
