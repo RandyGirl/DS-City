@@ -1,1 +1,1 @@
-# sd-City
+# Data Structures course project
